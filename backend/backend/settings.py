@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
 # third-party
 'rest_framework',
+
+
  'accounts', # custom user app
  
 
@@ -48,18 +50,17 @@ INSTALLED_APPS = [
 'equipment',
 ]
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ),
+    ]
 }
 
-MIDDLEWARE = [
-'corsheaders.middleware.CorsMiddleware', # ADD THIS AT TOP
 
+MIDDLEWARE = [
+  'corsheaders.middleware.CorsMiddleware',
 
 'django.middleware.security.SecurityMiddleware',
 'django.contrib.sessions.middleware.SessionMiddleware',
@@ -71,6 +72,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+ADMIN_FORCE_LOGIN = True
 
 ROOT_URLCONF = 'backend.urls'
 

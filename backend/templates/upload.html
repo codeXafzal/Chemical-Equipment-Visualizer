@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload CSV</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        input {
+            margin: 20px 0;
+        }
+
+        button {
+            background: #2c5364;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Upload CSV File</h2>
+
+    <form method="POST" enctype="multipart/form-data" action="/api/upload/">
+        {% csrf_token %}
+        <input type="file" name="file" required /><br>
+        <button type="submit">Upload & Analyze</button>
+    </form>
+</div>
+
+</body>
+</html>
